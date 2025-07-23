@@ -4,8 +4,7 @@ from langchain_groq import ChatGroq  # Interface to use Groq models
 from langchain_core.messages import HumanMessage, SystemMessage, BaseMessage, AIMessage
 from dotenv import load_dotenv
 
-load_dotenv()
-
+api_key= st.secrets["api_key"]
 
 # Note: It's recommended to put this key in a .env file for security
 
