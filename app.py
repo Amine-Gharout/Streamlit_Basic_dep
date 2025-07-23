@@ -8,7 +8,6 @@ load_dotenv()
 
 
 # Note: It's recommended to put this key in a .env file for security
-api_key = r'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'
 
 # Initialize the Groq language model
 llm = ChatGroq(api_key=api_key,
