@@ -2,7 +2,7 @@ import os
 from langchain_groq import ChatGroq  # Interface to use Groq models
 from langchain_core.messages import HumanMessage, SystemMessage, BaseMessage, AIMessage
 from dotenv import load_dotenv
-
+import streamlit as st
 # Load environment variables from .env file
 load_dotenv()
 
@@ -76,4 +76,5 @@ if user_query is not None and user_query != '':
         st.markdown(response)
 
     st.session_state.chat_history.append(AIMessage(response))
+
 
