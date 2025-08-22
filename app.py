@@ -1,17 +1,19 @@
-import streamlit as st
+import os
 from langchain_groq import ChatGroq  # Interface to use Groq models
-
 from langchain_core.messages import HumanMessage, SystemMessage, BaseMessage, AIMessage
 from dotenv import load_dotenv
 
-api_key= st.secrets["api_key"]
+# Load environment variables from .env file
+load_dotenv()
 
-# Note: It's recommended to put this key in a .env file for security
+# Get API key from environment variable
+api_key = os.getenv("API_KEY")
 
 # Initialize the Groq language model
-llm = ChatGroq(api_key=api_key,
-               model="llama-3.3-70b-versatile")  # Llama 3.3 70B model for high-quality responses
-
+llm = ChatGroq(
+    api_key=api_key,
+    model="llama-3.3-70b-versatile"  # Llama 3.3 70B model for high-quality responses
+)
 # System prompt that defines the AI assistant's behavior
 SYSTEM_PROMPT = """
 Speak always in French"""
@@ -74,3 +76,4 @@ if user_query is not None and user_query != '':
         st.markdown(response)
 
     st.session_state.chat_history.append(AIMessage(response))
+
